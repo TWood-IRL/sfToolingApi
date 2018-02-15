@@ -21,8 +21,8 @@ public class MetadataApiSession {
 	private static  String org = "" ; 
 	private static MetadataApiSession instance; 
 
-	private static final String PROD_AUTH = "https://login.salesforce.com/services/Soap/u/41.0/"  ; 
-	private static final String SANDBOX_AUTH = "https://test.salesforce.com/services/Soap/u/41.0/"  ; 
+	private static final String PROD_AUTH = "https://login.salesforce.com/services/Soap/T/41.0/"  ; 
+	private static final String SANDBOX_AUTH = "https://test.salesforce.com/services/Soap/T/41.0/"  ; 
 
 	
 	private static PropertiesFile props = new PropertiesFile() ;
