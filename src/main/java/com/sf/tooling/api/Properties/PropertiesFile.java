@@ -1,4 +1,4 @@
-package com.sf.metadata.api.Properties ; 
+package com.sf.tooling.api.Properties ; 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;

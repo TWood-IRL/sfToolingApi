@@ -1,6 +1,6 @@
-package com.sf.metadata.api.Example;
+package com.sf.tooling.api.Example;
 
-import com.sf.metadata.api.Session.ToolingApiSession;
+import com.sf.tooling.api.Session.ToolingApiSession;
 import com.sforce.soap.tooling.SoapConnection;
 import com.sforce.ws.ConnectionException;
 

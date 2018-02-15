@@ -1,5 +1,5 @@
 
-package com.sf.metadata.api.Session;
+package com.sf.tooling.api.Session;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.logging.Logger;
 
-import com.sf.metadata.api.Properties.PropertiesFile;
+import com.sf.tooling.api.Properties.PropertiesFile;
 import com.sforce.soap.tooling.Connector;
 import com.sforce.soap.tooling.LoginResult;
 import com.sforce.soap.tooling.SoapConnection;
