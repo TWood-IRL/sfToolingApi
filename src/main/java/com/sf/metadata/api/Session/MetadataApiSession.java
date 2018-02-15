@@ -8,15 +8,15 @@ import java.nio.file.Files;
 import java.util.logging.Logger;
 
 import com.sf.metadata.api.Properties.PropertiesFile;
-import com.sforce.soap.partner.Connector;
-import com.sforce.soap.partner.PartnerConnection;
+import com.sforce.soap.tooling.Connector;
+import com.sforce.soap.tooling.SoapConnection;
 import com.sforce.ws.ConnectionException;
 import com.sforce.ws.ConnectorConfig;
 
 
 
 public class MetadataApiSession {
-	private static PartnerConnection connection;
+	private static SoapConnection connection;
 	private static final Logger LOG = Logger.getLogger(MetadataApiSession.class.getName()) ; 
 	private static  String org = "" ; 
 	private static MetadataApiSession instance; 
@@ -65,5 +65,13 @@ public class MetadataApiSession {
 	    	  
 	    	  System.exit(1);
 	      }  
+	}
+	private static synchronized MetadataApiSession getInstance(){
+		if(instance== null )
+			instance = new MetadataApiSession() ; 
+		return MetadataApiSession.instance; 	
+	}
+	public static synchronized SoapConnection connection(){
+		return MetadataApiSession.getInstance().connection ; 
 	}
 }
