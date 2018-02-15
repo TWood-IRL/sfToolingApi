@@ -6,4 +6,28 @@
   <name>Salesforce PageFactory Api Project </name>
   <description>Initialise Sobject pages using the metadata api and identify elements on page quickly and easily
 </description>
+
+
+<repositories>
+  		<repository>
+    		<id>repo</id>
+    		<!--  Have to have to retreive PartnerApi Jar
+    			Added file://   //  extra brackets for machine name -->
+    		
+    		<url>file:////${basedir}//lib//repo</url>
+  		</repository>
+	</repositories>
+	<dependencies>
+
+		<dependency>
+		    <groupId>com.sf.api</groupId>
+		    <artifactId>partnerAPI</artifactId>
+		    <version>1.0</version>
+		  </dependency>
+		<dependency>
+			<groupId>com.force.api</groupId>
+			<artifactId>force-wsc</artifactId>
+			<version>40.1.1</version>
+		</dependency>
+		</dependencies>
 </project>
