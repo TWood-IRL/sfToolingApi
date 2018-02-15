@@ -11,7 +11,7 @@
 <repositories>
   		<repository>
     		<id>repo</id>
-    		<!--  Have to have to retreive PartnerApi Jar
+    		<!--  Have to have to retreive tooling Jar
     			Added file://   //  extra brackets for machine name -->
     		
     		<url>file:////${basedir}//lib//repo</url>

@@ -9,17 +9,18 @@ import java.util.logging.Logger;
 
 import com.sf.metadata.api.Properties.PropertiesFile;
 import com.sforce.soap.tooling.Connector;
+import com.sforce.soap.tooling.LoginResult;
 import com.sforce.soap.tooling.SoapConnection;
 import com.sforce.ws.ConnectionException;
 import com.sforce.ws.ConnectorConfig;
 
 
 
-public class MetadataApiSession {
+public class ToolingApiSession {
 	private static SoapConnection connection;
-	private static final Logger LOG = Logger.getLogger(MetadataApiSession.class.getName()) ; 
+	private static final Logger LOG = Logger.getLogger(ToolingApiSession.class.getName()) ; 
 	private static  String org = "" ; 
-	private static MetadataApiSession instance; 
+	private static ToolingApiSession instance; 
 
 	private static final String PROD_AUTH = "https://login.salesforce.com/services/Soap/T/41.0/"  ; 
 	private static final String SANDBOX_AUTH = "https://test.salesforce.com/services/Soap/T/41.0/"  ; 
@@ -28,7 +29,7 @@ public class MetadataApiSession {
 	private static PropertiesFile props = new PropertiesFile() ;
 	
 
- 	private MetadataApiSession() {
+ 	private ToolingApiSession() {
 		org = PropertiesFile.org ;
 		File apiLog = new File("./APILoggingFile.log") ;
 		String endPoint = (props.getType()  == "SANDBOX" ) ? SANDBOX_AUTH : PROD_AUTH ; 
@@ -58,7 +59,10 @@ public class MetadataApiSession {
 	    try {     
 	    	LOG.info("API Performing Connection ! to " +org);
 	    	 connection = Connector.newConnection(config);
+	    	 LoginResult result = connection.login(connection.getConfig().getUsername(), connection.getConfig().getPassword()) ;
 	    	 
+	    	 connection.setSessionHeader(result.getSessionId());
+
 	    	 LOG.info("API Connnected Successfully ! - Refer to Log for more information - " + apiLog.getAbsolutePath());
 	      } catch (ConnectionException e1) {
 	    	  LOG.warning("API Connection UnSuccessfull ! - Check properties file \nExiting Application\n" +e1 );
@@ -66,12 +70,12 @@ public class MetadataApiSession {
 	    	  System.exit(1);
 	      }  
 	}
-	private static synchronized MetadataApiSession getInstance(){
+	private static synchronized ToolingApiSession getInstance(){
 		if(instance== null )
-			instance = new MetadataApiSession() ; 
-		return MetadataApiSession.instance; 	
+			instance = new ToolingApiSession() ; 
+		return ToolingApiSession.instance; 	
 	}
 	public static synchronized SoapConnection connection(){
-		return MetadataApiSession.getInstance().connection ; 
+		return ToolingApiSession.getInstance().connection ; 
 	}
 }
