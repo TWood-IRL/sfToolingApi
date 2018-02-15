@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=%cd%\tooling.jar -DgroupId=com.sf.api.tooling -DartifactId=toolingApi -Dversion=1.0 -Dpackaging=jar -DlocalRepositoryPath=%cd%\repo
